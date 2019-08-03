@@ -167,6 +167,8 @@ private slots:
     void on_chkHeightMapInvert_toggled(bool checked);
     void on_cmdHeightMapCreate_clicked();
     void on_cmdHeightMapBorderAuto_clicked();
+    void on_cmdHeightMapProbeGridAuto_clicked();
+    void on_cmdHeightMapInterpolationGridAuto_clicked();
     void on_cmdFileAbort_clicked();
     void on_cmdSpindle_clicked(bool checked);
 

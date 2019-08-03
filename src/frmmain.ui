@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1214</width>
-    <height>890</height>
+    <height>902</height>
    </rect>
   </property>
   <property name="acceptDrops">
@@ -575,6 +575,19 @@ QSlider::handle:horizontal:hover {
                </widget>
               </item>
               <item>
+               <spacer name="horizontalSpacer_3">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
                <widget class="StyledToolButton" name="cmdHeightMapBorderAuto">
                 <property name="minimumSize">
                  <size>
@@ -775,6 +788,19 @@ QSlider::handle:horizontal:hover {
                 </property>
                </spacer>
               </item>
+              <item>
+               <widget class="StyledToolButton" name="cmdHeightMapProbeGridAuto">
+                <property name="minimumSize">
+                 <size>
+                  <width>44</width>
+                  <height>18</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>Auto</string>
+                </property>
+               </widget>
+              </item>
              </layout>
             </item>
            </layout>
@@ -919,6 +945,19 @@ QSlider::handle:horizontal:hover {
                 </property>
                </spacer>
               </item>
+              <item>
+               <widget class="StyledToolButton" name="cmdHeightMapInterpolationGridAuto">
+                <property name="minimumSize">
+                 <size>
+                  <width>44</width>
+                  <height>18</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>Auto</string>
+                </property>
+               </widget>
+              </item>
              </layout>
             </item>
            </layout>
@@ -963,6 +1002,9 @@ QSlider::handle:horizontal:hover {
            </property>
            <property name="text">
             <string>Autoscroll</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
            </property>
           </widget>
          </item>

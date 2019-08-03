@@ -123,6 +123,8 @@ frmMain::frmMain(QWidget *parent) :
     ui->cmdLeft->setParent(ui->glwVisualizer);
 
     ui->cmdHeightMapBorderAuto->setMinimumHeight(ui->chkHeightMapBorderShow->sizeHint().height());
+    ui->cmdHeightMapProbeGridAuto->setMinimumHeight(ui->chkHeightMapGridShow->sizeHint().height());
+    ui->cmdHeightMapInterpolationGridAuto->setMinimumHeight(ui->chkHeightMapInterpolationShow->sizeHint().height());
     ui->cmdHeightMapCreate->setMinimumHeight(ui->cmdFileOpen->sizeHint().height());
     ui->cmdHeightMapLoad->setMinimumHeight(ui->cmdFileOpen->sizeHint().height());
     ui->cmdHeightMapSave->setMinimumHeight(ui->cmdFileOpen->sizeHint().height());
@@ -3862,6 +3864,25 @@ void frmMain::on_cmdHeightMapBorderAuto_clicked()
     }
 }
 
+void frmMain::on_cmdHeightMapProbeGridAuto_clicked()
+{
+  double width = ui->txtHeightMapBorderWidth->value();
+  double height = ui->txtHeightMapBorderHeight->value();
+  // every 8 mm there should be a probing point
+  int pointsX = static_cast<int>(std::ceil(width / 8.));
+  int pointsY = static_cast<int>(std::ceil(height / 8.));
+  ui->txtHeightMapGridX->setValue(pointsX);
+  ui->txtHeightMapGridY->setValue(pointsY);
+}
+
+void frmMain::on_cmdHeightMapInterpolationGridAuto_clicked()
+{
+  int x = static_cast<int>(ui->txtHeightMapGridX->value());
+  int y = static_cast<int>(ui->txtHeightMapGridY->value());
+  ui->txtHeightMapInterpolationStepX->setValue(x + 5 * (x - 1));
+  ui->txtHeightMapInterpolationStepY->setValue(y + 5 * (y - 1));
+}
+
 bool frmMain::compareCoordinates(double x, double y, double z)
 {
     return ui->txtMPosX->text().toDouble() == x && ui->txtMPosY->text().toDouble() == y && ui->txtMPosZ->text().toDouble() == z;
@@ -3869,6 +3890,7 @@ bool frmMain::compareCoordinates(double x, double y, double z)
 
 void frmMain::onCmdUserClicked(bool checked)
 {
+    Q_UNUSED(checked)
     int i = sender()->objectName().right(1).toInt();
 
     QStringList list = m_settings->userCommands(i).split(";");
@@ -3880,6 +3902,7 @@ void frmMain::onCmdUserClicked(bool checked)
 
 void frmMain::onOverridingToggled(bool checked)
 {
+    Q_UNUSED(checked)
     ui->grpOverriding->setProperty("overrided", ui->slbFeedOverride->isChecked()
                                    || ui->slbRapidOverride->isChecked() || ui->slbSpindleOverride->isChecked());
     style()->unpolish(ui->grpOverriding);
@@ -3902,9 +3925,9 @@ void frmMain::updateOverride(SliderBox *slider, int value, char command)
 
 void frmMain::jogStep()
 {
-    if (m_jogVector.length() == 0) return;
+    if (qFuzzyIsNull(m_jogVector.length())) return;
 
-    if (ui->cboJogStep->currentText().toDouble() == 0) {
+    if (qFuzzyIsNull(ui->cboJogStep->currentText().toDouble())) {
         const double acc = m_settings->acceleration();              // Acceleration mm/sec^2
         int speed = ui->cboJogFeed->currentText().toInt();          // Speed mm/min
         double v = (double)speed / 60;                              // Rapid speed mm/sec
