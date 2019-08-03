@@ -3185,6 +3185,9 @@ bool frmMain::updateHeightMapGrid()
         }
     }
 
+    // go back to 0 position
+    m_probeModel.setData(m_probeModel.index(m_probeModel.rowCount() - 1, 1), QString("G0X0Y0"));
+
     m_programLoading = false;
 
     if (m_currentDrawer == m_probeDrawer) updateParser();
