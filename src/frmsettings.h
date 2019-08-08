@@ -113,6 +113,10 @@ public:
     void setDrawModeVectors(bool value);
     QString userCommands(int index);
     void setUserCommands(int index, QString commands);
+    QString userCommandsToolTip(int index);
+    void setUserCommandsToolTip(int index, QString toolTip);
+    QString userCommandsIcon(int index);
+    void setUserCommandsIcon(int index, QString resourcePath);
     bool ignoreErrors();
     void setIgnoreErrors(bool value);
     bool autoLine();

@@ -430,9 +430,12 @@ void frmMain::loadSettings()
     m_settings->setTouchCommand(set.value("touchCommand").toString());
     m_settings->setSafePositionCommand(set.value("safePositionCommand").toString());
 
-    foreach (StyledToolButton* button, this->findChildren<StyledToolButton*>(QRegExp("cmdUser\\d"))) {
+    foreach (StyledToolButton* button, this->findChildren<StyledToolButton*>(QRegExp("cmdUser\\d")))
+    {
         int i = button->objectName().right(1).toInt();
         m_settings->setUserCommands(i, set.value(QString("userCommands%1").arg(i)).toString());
+        m_settings->setUserCommandsToolTip(i, set.value(QString("userCommandsToolTip%1").arg(i)).toString());
+        m_settings->setUserCommandsIcon(i, set.value(QString("userCommandsIcon%1").arg(i)).toString());
     }
 
     ui->cboJogStep->setItems(set.value("jogSteps").toStringList());
@@ -561,9 +564,12 @@ void frmMain::saveSettings()
     set.setValue("spindleOverride", ui->slbSpindleOverride->isChecked());
     set.setValue("spindleOverrideValue", ui->slbSpindleOverride->value());
 
-    foreach (StyledToolButton* button, this->findChildren<StyledToolButton*>(QRegExp("cmdUser\\d"))) {
+    foreach (StyledToolButton* button, this->findChildren<StyledToolButton*>(QRegExp("cmdUser\\d")))
+    {
         int i = button->objectName().right(1).toInt();
         set.setValue(QString("userCommands%1").arg(i), m_settings->userCommands(i));
+        set.setValue(QString("userCommandsToolTip%1").arg(i), m_settings->userCommandsToolTip(i));
+        set.setValue(QString("userCommandsIcon%1").arg(i), m_settings->userCommandsIcon(i));
     }
 
     set.setValue("jogSteps", ui->cboJogStep->items());
@@ -2278,9 +2284,16 @@ void frmMain::applySettings() {
     ui->cmdClearConsole->setFixedHeight(ui->cboCommand->height());
     ui->cmdCommandSend->setFixedHeight(ui->cboCommand->height());
 
-    foreach (StyledToolButton* button, this->findChildren<StyledToolButton*>(QRegExp("cmdUser\\d"))) {
-        button->setToolTip(m_settings->userCommands(button->objectName().right(1).toInt()));
+    foreach (StyledToolButton* button, this->findChildren<StyledToolButton*>(QRegExp("cmdUser\\d")))
+    {
+        QString tt = m_settings->userCommandsToolTip(button->objectName().right(1).toInt());
+        if (tt.isEmpty())
+            tt = m_settings->userCommands(button->objectName().right(1).toInt());
+        button->setToolTip(tt);
         button->setEnabled(!button->toolTip().isEmpty());
+        QString res = m_settings->userCommandsIcon(button->objectName().right(1).toInt());
+        if (!res.isEmpty())
+          button->setIcon(QIcon(res)); //:/images/PCB.png
     }
 }
 

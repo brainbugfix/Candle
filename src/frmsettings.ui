@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>555</width>
+    <width>596</width>
     <height>715</height>
    </rect>
   </property>
@@ -71,9 +71,9 @@ QGroupBox {
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>0</y>
-          <width>436</width>
-          <height>1749</height>
+          <y>-480</y>
+          <width>472</width>
+          <height>2057</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -564,6 +564,26 @@ QGroupBox {
              </widget>
             </item>
             <item>
+             <widget class="QLineEdit" name="txtUserCommandToolTip0">
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="placeholderText">
+               <string>ToolTip</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="txtUserCommandIcon0">
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="placeholderText">
+               <string>Resource File Path</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QLabel" name="label_36">
               <property name="styleSheet">
                <string notr="true">padding-top: 3;</string>
@@ -583,6 +603,26 @@ QGroupBox {
               </property>
               <property name="placeholderText">
                <string>Command 1; command 2; ...</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="txtUserCommandToolTip1">
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="placeholderText">
+               <string>ToolTip</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="txtUserCommandIcon1">
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="placeholderText">
+               <string>Resource File Path</string>
               </property>
              </widget>
             </item>
@@ -610,6 +650,26 @@ QGroupBox {
              </widget>
             </item>
             <item>
+             <widget class="QLineEdit" name="txtUserCommandToolTip2">
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="placeholderText">
+               <string>ToolTip</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="txtUserCommandIcon2">
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="placeholderText">
+               <string>Resource File Path</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QLabel" name="label_39">
               <property name="styleSheet">
                <string notr="true">padding-top: 3;</string>
@@ -629,6 +689,26 @@ QGroupBox {
               </property>
               <property name="placeholderText">
                <string>Command 1; command 2; ...</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="txtUserCommandToolTip3">
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="placeholderText">
+               <string>ToolTip</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="txtUserCommandIcon3">
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="placeholderText">
+               <string>Resource File Path</string>
               </property>
              </widget>
             </item>

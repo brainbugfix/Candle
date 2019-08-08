@@ -563,6 +563,26 @@ void frmSettings::setUserCommands(int index, QString commands)
     this->findChild<QLineEdit*>(QString("txtUserCommand%1").arg(index))->setText(commands);
 }
 
+QString frmSettings::userCommandsToolTip(int index)
+{
+    return this->findChild<QLineEdit*>(QString("txtUserCommandToolTip%1").arg(index))->text();
+}
+
+void frmSettings::setUserCommandsToolTip(int index, QString toolTip)
+{
+    this->findChild<QLineEdit*>(QString("txtUserCommandToolTip%1").arg(index))->setText(toolTip);
+}
+
+QString frmSettings::userCommandsIcon(int index)
+{
+    return this->findChild<QLineEdit*>(QString("txtUserCommandIcon%1").arg(index))->text();
+}
+
+void frmSettings::setUserCommandsIcon(int index, QString resourcePath)
+{
+    this->findChild<QLineEdit*>(QString("txtUserCommandIcon%1").arg(index))->setText(resourcePath);
+}
+
 bool frmSettings::ignoreErrors()
 {
     return ui->chkIgnoreErrors->isChecked();
@@ -671,7 +691,7 @@ void frmSettings::on_cmdDefaults_clicked()
     setPanelOverriding(true);
     setPanelHeightmap(true);
     setPanelJog(true);
-    setPanelSpindle(true);   
+    setPanelSpindle(true);
 
     ui->clpTool->setColor(QColor(255, 153, 0));
 
